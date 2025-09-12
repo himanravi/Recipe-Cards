@@ -1,0 +1,49 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+:root{
+  --primary:#ff6b6b;
+  --secondary:#ffa502;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  padding-top:76px; /* offset fixed nav */
+  background:#fef9f3;
+}
+
+.hero{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:4rem 0;
+  text-align:center;
+}
+
+.hero h1{animation:fadeDown 1s ease;}
+@keyframes fadeDown{
+  from{opacity:0;transform:translateY(-30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Cards */
+.card{
+  border:none;
+  border-radius:15px;
+  overflow:hidden;
+  transition:transform .4s ease, box-shadow .4s ease;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+.card img{
+  transition:transform .5s ease;
+}
+.card:hover img{
+  transform:scale(1.08);
+}
+
+/* Smooth scroll */
+html{
+  scroll-behavior:smooth;
+}

@@ -1,0 +1,62 @@
+<%- include('partials/header') %>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Responsive Recipe Cards</h1>
+    <p class="lead">Add, share and browse delicious recipes!</p>
+  </div>
+</section>
+
+<!-- Add Recipe -->
+<section id="add-recipe" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Add a New Recipe</h2>
+    <form action="/add" method="post" class="row g-3 justify-content-center">
+      <div class="col-md-6">
+        <label class="form-label">Recipe Name</label>
+        <input type="text" name="name" class="form-control" required maxlength="120">
+      </div>
+      <div class="col-md-6">
+        <label class="form-label">Cook Time (min)</label>
+        <input type="number" name="time" class="form-control" required min="1">
+      </div>
+      <div class="col-12">
+        <label class="form-label">Ingredients (comma separated)</label>
+        <textarea name="ingredients" class="form-control" rows="3" required maxlength="500"></textarea>
+      </div>
+      <div class="col-12">
+        <label class="form-label">Image URL (optional)</label>
+        <input type="url" name="image" class="form-control">
+      </div>
+      <div class="col-12 text-center">
+        <button type="submit" class="btn btn-outline-primary btn-lg">Add Recipe</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Recipe Gallery</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      <% recipes.forEach(r => { %>
+        <div class="col">
+          <div class="card h-100">
+            <img src="<%= r.image %>" class="card-img-top" alt="<%= r.name %>">
+            <div class="card-body">
+              <h5 class="card-title"><%= r.name %></h5>
+              <p class="card-text"><small><%= r.ingredients %></small></p>
+            </div>
+            <div class="card-footer text-muted">
+              🕒 <%= r.time %> min
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
